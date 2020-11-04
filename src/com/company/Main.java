@@ -24,6 +24,7 @@ public class Main {
         SemaphoreSystem.getInstance().printProductionRepository();
 
         ExecutorService executor = Executors.newCachedThreadPool();
+        
         // There is an area within the consumeProductsFromProductionBuffers() -- Method
         // Where you can increase the time in which the results are displayed
         for (int i = 0; i < userThreadNumber; i++){
