@@ -1,0 +1,48 @@
+Student Name: Antoine Jermaine Smith Jr.
+Course: CSIS 3810
+Project Number: 2
+
+
+1.0 Introduction
+	1.1 Goals and Objectives
+		The purpose of this assignment is two control the output of threads by using the two semaphore primitives: acquire and release
+
+2.0 Data Design
+	2.1 Data Structures
+		Multiple array lists are distributed within the SemaphoreSystem class to act as both a production factory 
+		for the producer and as a consumption base for the consumer.
+		
+
+3.0 User Interface Design
+	3.1 Description of the User Interface
+		The data is organized in groups within the command line. 
+		You will be informed on the starting products inside of the three production shops.
+		Furthermore, you will know when each customer/consumer has entered the shop and made a purchase in each round.
+		Additionally, you will also be aware of when the three shops are officially closed.
+
+4.0 Restrictions, Limitations, and Constraints
+	This project is only a simulation of how threads operate within an operating system using random values. 
+	Actual user data is inaccessible to this program.
+
+5.0 Testing
+	5.1 Expected Responses
+		All for consumers is consumptions should be displayed within each execution. Furthermore, the shops are to be reloaded with more products by the
+		producer.
+		The initial products within each production shop is displayed.
+	5.2 Potential Errors
+		Index out of bounds error
+		Thread error
+
+6.0 Command Line
+	6.1 Running Instructions
+		6.1.1 Directory
+			cd inside of the src/com/company
+			6.1.1.1 Run Command 
+				javac *.java
+			6.1.1.2 Reasoning behind Command
+				To create the .class files
+		6.1.2 Running the Program
+			Redirect yourself into src
+			6.1.2.1 Run Command
+				java com/company/Main.java
+		
