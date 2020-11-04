@@ -74,6 +74,9 @@ public class SemaphoreSystem {
     private int rounds2 = 1;
     private int rounds3 = 1;
 
+    // User Thread Total
+    private int numberOfThreads = 0;
+
     private int consumersListPositions[] = {consumer1ListPosition, consumer2ListPosition, consumer3ListPosition, consumer4ListPosition};
 
 
@@ -232,7 +235,7 @@ public class SemaphoreSystem {
         sem_Production.release();
 
         // Reloading the Shops with more Products for Consumption
-        if (roundOfBatch == 200){
+        if (roundOfBatch == numberOfThreads){
             System.out.println("\n\n______________________________________________________________\nRound " + (roundOfBatch) + " of the Batch is now Completed.");
             System.out.println("All three shops are now closed for the day. Come back during business hours.");
         }
@@ -278,6 +281,9 @@ public class SemaphoreSystem {
         return randomNumber;
     }
 
+    public void getUserThreadCount(int x){
+        numberOfThreads = x;
+    }
 
 
     // Updates the Production values for the three Producer Threads
