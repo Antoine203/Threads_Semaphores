@@ -11,6 +11,23 @@ Project Number: 2
 	2.1 Data Structures
 		Multiple array lists are distributed within the SemaphoreSystem class to act as both a production factory 
 		for the producer and as a consumption base for the consumer.
+	2.2 Producer Threads
+		The three producer threads are essentially the three entities that are providing the resources to the four consumer threads.
+		Their array lists are being populated by a random number function that generates number between 0 and 100.
+		Furthermore, each thread is populating their own special repository or individual shop with their values from their unique array list.
+	2.3 Consumer Threads
+		These threads are communicating with the producers' special repositories in order to collect products for insertion into their own array list.
+	2.4 Special Repositories or Shops
+		These repositories are essentially the shops for the producers to insert their products into and for the consumers to collect products from.
+	2.5 Semaphores
+		This is the data structure that is being used for synchronization between the producer, consumer and repositories.
+		2.5.1 Acquire
+			This primitive of the semaphore is used to collect the lock or deduct the number of permits from the semaphore. 
+			In this project, only 1 permit is used.
+		2.5.2 Release
+			This primitive of the semaphore is used to release the lock or increase the number of permits in the semaphore.
+			Relevance to this project, giving the permit back to the semaphore.
+		
 		
 
 3.0 User Interface Design
@@ -19,6 +36,15 @@ Project Number: 2
 		You will be informed on the starting products inside of the three production shops.
 		Furthermore, you will know when each customer/consumer has entered the shop and made a purchase in each round.
 		Additionally, you will also be aware of when the three shops are officially closed.
+	3.2 Outline
+		3.2.1 Prompt User
+			Ask the user how many threads would they like to have ran.
+		3.2.2 Initialization Process
+			The three repositories are loaded with products from each producer.
+		3.2.3 Consumption
+			All four consumers continuously enter the three shops collecting products to be entered into their unique list arrays
+		3.2.4 Completion
+			Exit note to the user.
 
 4.0 Restrictions, Limitations, and Constraints
 	This project is only a simulation of how threads operate within an operating system using random values. 

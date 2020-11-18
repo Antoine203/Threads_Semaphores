@@ -22,7 +22,6 @@ public class SemaphoreSystem {
     // Creating Semaphore Instances
     private Semaphore sem_Production = new Semaphore(1, true);
 
-
     // Initializing Threads
     // Producer Threads
     private Producer producer1 = new Producer();
@@ -46,10 +45,6 @@ public class SemaphoreSystem {
     private int consumer3Length = 0;
     private int consumer4Length = 0;
 
-    // Consumer Arrays
-    Consumer consumer[] = {consumer1, consumer2, consumer3, consumer4};
-    private int consumerIDs[] = {1,2,3,4};
-    private int consumerLengths[] = {consumer1Length, consumer2Length, consumer3Length, consumer4Length};
 
     // Special Repository -- Area for Products can go and be Consumed
     private int producer1_ProductsBuffer[] = new int[10];
@@ -137,102 +132,95 @@ public class SemaphoreSystem {
 
         sem_Production.acquire();
         // Consumers Consuming Production 1 Shop is Items
-        synchronized (this){
-            System.out.println("______________________________________________________________\n\nConsumption in Production Shop 1 is Commencing......\n\n______________________________________________________________\n");
-            // Consumer P1
-            consumer1.consumptions.add(producer1_ProductsBuffer[openSpot_Buffer1 - 1]); // Consuming Products
-            System.out.println("Consumer 1 Consumption: "+ consumer1.consumptions.get(consumer1ListPosition++));
-            openSpot_Buffer1--;
-            consumer1Length++;
+        System.out.println("______________________________________________________________\n\nConsumption in Production Shop 1 is Commencing......");
+        // Consumer P1
+        consumer1.consumptions.add(producer1_ProductsBuffer[openSpot_Buffer1 - 1]); // Consuming Products
+        System.out.println("Consumer 1 Consumption: "+ consumer1.consumptions.get(consumer1ListPosition++));
+        openSpot_Buffer1--;
+        consumer1Length++;
 
-            // Consumer P2
-            consumer2.consumptions.add(producer1_ProductsBuffer[openSpot_Buffer1 - 1]); // Consuming Products
-            System.out.println("Consumer 2 Consumption: "+ consumer2.consumptions.get(consumer2ListPosition++));
-            openSpot_Buffer1--;
-            consumer2Length++;
+        // Consumer P2
+        consumer2.consumptions.add(producer1_ProductsBuffer[openSpot_Buffer1 - 1]); // Consuming Products
+        System.out.println("Consumer 2 Consumption: "+ consumer2.consumptions.get(consumer2ListPosition++));
+        openSpot_Buffer1--;
+        consumer2Length++;
 
-            // Consumer P3
-            consumer3.consumptions.add(producer1_ProductsBuffer[openSpot_Buffer1 - 1]); // Consuming Products
-            System.out.println("Consumer 3 Consumption: "+ consumer3.consumptions.get(consumer3ListPosition++));
-            openSpot_Buffer1--;
-            consumer3Length++;
+        // Consumer P3
+        consumer3.consumptions.add(producer1_ProductsBuffer[openSpot_Buffer1 - 1]); // Consuming Products
+        System.out.println("Consumer 3 Consumption: "+ consumer3.consumptions.get(consumer3ListPosition++));
+        openSpot_Buffer1--;
+        consumer3Length++;
 
-            // Consumer P4
-            consumer4.consumptions.add(producer1_ProductsBuffer[openSpot_Buffer1 - 1]); // Consuming Products
-            System.out.println("Consumer 4 Consumption: "+ consumer4.consumptions.get(consumer4ListPosition++));
-            openSpot_Buffer1--;
-            consumer4Length++;
+        // Consumer P4
+        consumer4.consumptions.add(producer1_ProductsBuffer[openSpot_Buffer1 - 1]); // Consuming Products
+        System.out.println("Consumer 4 Consumption: "+ consumer4.consumptions.get(consumer4ListPosition++));
+        openSpot_Buffer1--;
+        consumer4Length++;
 
 
-            // Completion of Consumption and Updates
-            System.out.println("\n\nConsumption in Production Shop 1\nRound "+ rounds1 + " is Completed......");
-            System.out.println("Updating....\n\n______________________________________________________________\n");
-            rounds1++;
-        }
+        // Completion of Consumption and Updates
+        System.out.println("\n\nConsumption in Production Shop 1\nRound "+ rounds1 + " is Completed......");
+        System.out.println("Updating....\n\n______________________________________________________________\n");
+        rounds1++;
 
+        System.out.println("\nConsumption in Production Shop 2 is Commencing......");
+        consumer1.consumptions.add(producer2_ProductsBuffer[openSpot_Buffer2 - 1]); // Consuming Products
+        System.out.println("Consumer 1 Consumption: "+ consumer1.consumptions.get(consumer1ListPosition));
+        openSpot_Buffer2--;
+        consumer1Length++;
+
+        consumer2.consumptions.add(producer2_ProductsBuffer[openSpot_Buffer2 - 1]); // Consuming Products
+        System.out.println("Consumer 2 Consumption: "+ consumer2.consumptions.get(consumer2ListPosition));
+        openSpot_Buffer2--;
+        consumer2Length++;
+
+        consumer3.consumptions.add(producer2_ProductsBuffer[openSpot_Buffer2 - 1]); // Consuming Products
+        System.out.println("Consumer 3 Consumption: "+ consumer3.consumptions.get(consumer3ListPosition));
+        openSpot_Buffer2--;
+        consumer3Length++;
+
+        consumer4.consumptions.add(producer2_ProductsBuffer[openSpot_Buffer2 - 1]); // Consuming Products
+        System.out.println("Consumer 4 Consumption: "+ consumer4.consumptions.get(consumer4ListPosition));
+        openSpot_Buffer2--;
+        consumer4Length++;
+
+        // Completion of Consumption and Updates
+        System.out.println("\n\nConsumption in Production Shop 2\nRound "+ rounds2 + " is Completed......");
+        System.out.println("Updating....\n");
+        rounds2++;
         // Consuming Production 2
-        synchronized (this) {
-            System.out.println("\nConsumption in Production Shop 2 is Commencing......");
-            consumer1.consumptions.add(producer2_ProductsBuffer[openSpot_Buffer2 - 1]); // Consuming Products
-            System.out.println("Consumer 1 Consumption: "+ consumer1.consumptions.get(consumer1ListPosition));
-            openSpot_Buffer2--;
-            consumer1Length++;
-
-            consumer2.consumptions.add(producer2_ProductsBuffer[openSpot_Buffer2 - 1]); // Consuming Products
-            System.out.println("Consumer 2 Consumption: "+ consumer2.consumptions.get(consumer2ListPosition));
-            openSpot_Buffer2--;
-            consumer2Length++;
-
-            consumer3.consumptions.add(producer2_ProductsBuffer[openSpot_Buffer2 - 1]); // Consuming Products
-            System.out.println("Consumer 3 Consumption: "+ consumer3.consumptions.get(consumer3ListPosition));
-            openSpot_Buffer2--;
-            consumer3Length++;
-
-            consumer4.consumptions.add(producer2_ProductsBuffer[openSpot_Buffer2 - 1]); // Consuming Products
-            System.out.println("Consumer 4 Consumption: "+ consumer4.consumptions.get(consumer4ListPosition));
-            openSpot_Buffer2--;
-            consumer4Length++;
-
-            // Completion of Consumption and Updates
-            System.out.println("\n\nConsumption in Production Shop 2\nRound "+ rounds2 + " is Completed......");
-            System.out.println("Updating....\n");
-            rounds2++;
-        }
 
 
+        System.out.println("______________________________________________________________\n\nConsumption in Production Shop 3 is Commencing......");
+        consumer1.consumptions.add(producer3_ProductsBuffer[openSpot_Buffer3 - 1]); // Consuming Products
+        System.out.println("Consumer 1 Consumption: "+ consumer1.consumptions.get(consumer1ListPosition));
+        openSpot_Buffer3--;
+        consumer1Length++;
+
+        consumer2.consumptions.add(producer3_ProductsBuffer[openSpot_Buffer3 - 1]); // Consuming Products
+        System.out.println("Consumer 2 Consumption: "+ consumer2.consumptions.get(consumer2ListPosition));
+        openSpot_Buffer3--;
+        consumer2Length++;
+
+        consumer3.consumptions.add(producer3_ProductsBuffer[openSpot_Buffer3 - 1]); // Consuming Products
+        System.out.println("Consumer 3 Consumption: "+ consumer3.consumptions.get(consumer3ListPosition));
+        openSpot_Buffer3--;
+        consumer3Length++;
+
+        consumer4.consumptions.add(producer3_ProductsBuffer[openSpot_Buffer3 - 1]); // Consuming Products
+        System.out.println("Consumer 4 Consumption: "+ consumer4.consumptions.get(consumer4ListPosition));
+        openSpot_Buffer3--;
+        consumer4Length++;
+
+        // Completion of Consumption and Updates
+        System.out.println("\n\nConsumption in Production Shop 3\nRound "+ rounds3 + " is Completed......");
+        System.out.println("Updating....\n");
+        rounds3++;
         // Consuming Production 3
-        synchronized (this) {
-            System.out.println("______________________________________________________________\n\nConsumption in Production Shop 3 is Commencing......");
-            consumer1.consumptions.add(producer3_ProductsBuffer[openSpot_Buffer3 - 1]); // Consuming Products
-            System.out.println("Consumer 1 Consumption: "+ consumer1.consumptions.get(consumer1ListPosition));
-            openSpot_Buffer3--;
-            consumer1Length++;
 
-            consumer2.consumptions.add(producer3_ProductsBuffer[openSpot_Buffer3 - 1]); // Consuming Products
-            System.out.println("Consumer 2 Consumption: "+ consumer2.consumptions.get(consumer2ListPosition));
-            openSpot_Buffer3--;
-            consumer2Length++;
-
-            consumer3.consumptions.add(producer3_ProductsBuffer[openSpot_Buffer3 - 1]); // Consuming Products
-            System.out.println("Consumer 3 Consumption: "+ consumer3.consumptions.get(consumer3ListPosition));
-            openSpot_Buffer3--;
-            consumer3Length++;
-
-            consumer4.consumptions.add(producer3_ProductsBuffer[openSpot_Buffer3 - 1]); // Consuming Products
-            System.out.println("Consumer 4 Consumption: "+ consumer4.consumptions.get(consumer4ListPosition));
-            openSpot_Buffer3--;
-            consumer4Length++;
-
-            // Completion of Consumption and Updates
-            System.out.println("\n\nConsumption in Production Shop 3\nRound "+ rounds3 + " is Completed......");
-            System.out.println("Updating....\n");
-            rounds3++;
-        }
         // Brief Pause
         Thread.sleep(3000);
 
-        // Releasing the lock
-        sem_Production.release();
 
         // Reloading the Shops with more Products for Consumption
         if (roundOfBatch == numberOfThreads){
@@ -240,18 +228,18 @@ public class SemaphoreSystem {
             System.out.println("All three shops are now closed for the day. Come back during business hours.");
         }
         else{
-            synchronized (this){
-                int i = 0;
-                System.out.println("\n\n______________________________________________________________\n\nRound " + (roundOfBatch++) + " of the Batch is now Completed.\n\n______________________________________________________________\n");
-                System.out.println("Items are now being Added into all Three Shops.\nLoading....\n______________________________________________________________\n");
-                // Used for Increasing and Decreasing the display Time
-                TimeUnit.SECONDS.sleep(5);
-                while (i < 4){
-                    addProductsToProductionBuffers();
-                    i++;
-                }
+            int i = 0;
+            System.out.println("\n\n______________________________________________________________\n\nRound " + (roundOfBatch++) + " of the Batch is now Completed.\n\n______________________________________________________________\n");
+            System.out.println("Items are now being Added into all Three Shops.\nLoading....\n______________________________________________________________\n");
+            // Used for Increasing and Decreasing the display Time
+            TimeUnit.SECONDS.sleep(5);
+            while (i < 4) {
+                addProductsToProductionBuffers();
+                i++;
             }
         }
+        // Releasing the lock
+        sem_Production.release();
     }
 
     // Used for Printing the Production Repositories/Shops
@@ -297,7 +285,5 @@ public class SemaphoreSystem {
         producer2Length++;
         producer3Length++;
     }
-
-
 
 }
